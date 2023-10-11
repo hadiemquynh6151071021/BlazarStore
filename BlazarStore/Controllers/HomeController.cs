@@ -20,11 +20,24 @@ namespace BlazarStore.Controllers
             List<CategoryByGender> categoryByGenders = db.CategoryByGenders.ToList();
             return PartialView("_listCategory", categoryByGenders);
         }
-
-        public ActionResult RenderProductInHome()
+        public ActionResult RenderAllProduct()
         {
             List<Product> products = db.Products.Take(10).ToList();
             return PartialView("_listProductInHome", products);
+        }
+        public ActionResult RenderProduct(string id)
+        {
+            if( id == "all")
+            {
+                List<Product> products = db.Products.Take(10).ToList();
+                return PartialView("_listProductInHome", products);
+            }
+            else
+            {
+                List<Product> products = db.Products.Where(m => m.CategoryByGender.Category_by_gender == id).Take(10).ToList();
+                return PartialView("_listProductInHome", products);
+            }
+            
         }
 
         public ActionResult About()

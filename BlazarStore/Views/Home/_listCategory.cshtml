@@ -1,7 +1,30 @@
 ﻿@model IEnumerable<BlazarStore.Models.CategoryByGender>
 
-<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
+<li id="all" class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
 @foreach (var item in Model)
 {
-<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter="'.'+@item.Category_by_gender">@item.Category_by_gender</li>
+    <li id=@item.Category_by_gender_ID class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter="'.'+@item.Category_by_gender">@item.Category_by_gender</li>
 }
+
+<script src="~/Content/js/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+<script>
+    $("li").click(function (e) {
+        var id = $(this).attr("id");
+        $.ajax({
+            url: "/Home/RenderProduct",
+            data: { id: id },
+            success: function (response) {
+                
+
+                var $productGrid = $('div.product-grid');
+                //$productGrid.isotope({
+                //    itemSelector: '.product-item',
+                //    layoutMode: 'fitRows'
+                //});
+
+                $productGrid.html(response);
+            }
+        });
+    });
+</script>
