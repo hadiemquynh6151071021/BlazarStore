@@ -15,15 +15,8 @@
             url: "/Home/RenderProduct",
             data: { id: id },
             success: function (response) {
-                
 
-                var $productGrid = $('div.product-grid');
-                //$productGrid.isotope({
-                //    itemSelector: '.product-item',
-                //    layoutMode: 'fitRows'
-                //});
-
-                $productGrid.html(response);
+                $('.product-grid').html(response);
             }
         });
     });
