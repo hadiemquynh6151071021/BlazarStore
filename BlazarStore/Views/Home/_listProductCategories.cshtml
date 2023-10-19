@@ -19,11 +19,12 @@
             <div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
         </div>
     }
-</div>
 
-<div class="pagination">
+
+    <div class="pagination">
         Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
         @Html.PagedListPager(Model, page => Url.Action("RenderProduct", new { id = "Women", page }))
-</div>
+    </div>
 
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
