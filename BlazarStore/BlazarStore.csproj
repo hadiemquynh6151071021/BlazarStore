@@ -46,6 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -248,6 +254,7 @@
     <Content Include="Content\js\single_custom.js" />
     <Content Include="Content\Modern Fashion &amp; Clothing Online Shop Showroom Facebook Cover%281%29.png" />
     <Content Include="Content\Modern Fashion &amp; Clothing Online Shop Showroom Facebook Cover.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\plugins\easing\easing.js" />
     <Content Include="Content\plugins\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="Content\plugins\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -385,6 +392,7 @@
     <Content Include="Views\Home\_listCategory.cshtml" />
     <Content Include="Views\Home\_listProductInHome.cshtml" />
     <Content Include="Views\Home\Categories.cshtml" />
+    <Content Include="Views\Home\_listProductCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

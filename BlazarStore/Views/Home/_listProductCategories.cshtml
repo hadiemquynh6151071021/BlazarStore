@@ -22,10 +22,8 @@
 </div>
 
 <div class="pagination">
-    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
-    @Html.PagedListPager(Model, page => Url.Action("Categories", new { page }))
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("RenderProduct", new { id = "Women", page }))
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>

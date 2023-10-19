@@ -93,9 +93,8 @@
 
                             <!-- Product Grid -->
 
-                            <div class="product-grid"  data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
-                                @Html.Action("RenderAllProduct");
-                            </div>
+                            @Html.Action("RenderAllProduct");
+                            
 
                             <!-- Product Sorting -->
 
@@ -219,7 +218,6 @@
             url: "/Home/RenderProduct",
             data: { id: id },
             success: function (response) {
-
                 $('.product-grid').html(response);
             }
         });

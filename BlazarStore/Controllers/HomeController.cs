@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BlazarStore.Models;
+using PagedList;
 
 namespace BlazarStore.Controllers
 {
@@ -17,8 +18,7 @@ namespace BlazarStore.Controllers
 
         public ActionResult Categories()
         {
-            List<Product> products = db.Products.Take(10).ToList();
-            return View(products);
+            return View();
         }
 
         public ActionResult RenderCategory()
@@ -26,24 +26,24 @@ namespace BlazarStore.Controllers
             List<CategoryByGender> categoryByGenders = db.CategoryByGenders.ToList();
             return PartialView("_listCategory", categoryByGenders);
         }
-        public ActionResult RenderAllProduct()
+        public ActionResult RenderAllProduct(int? page)
         {
-            List<Product> products = db.Products.Take(15).ToList();
-            return PartialView("_listProductInHome", products);
+            if (page == null) page = 1;
+            int pageSize = 15;
+            int pageNumber = (page ?? 1);
+            List<Product> products = db.Products.ToList();
+            return PartialView("_listProductInHome", products.ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult RenderProduct(string id)
+        public ActionResult RenderProduct(string id, int ?page)
         {
-            if( id == "all")
-            {
-                List<Product> products = db.Products.Take(15).ToList();
-                return PartialView("_listProductInHome", products);
-            }
-            else 
-            {
-                List<Product> products = db.Products.Where(m => m.CategoryByGender.Category_by_gender == id).Take(15).ToList();
-                return PartialView("_listProductInHome", products);
-            }
-            
+            int pageSize = 15;
+            int pageNumber = (page ?? 1);
+            if (page == null) page = 1;
+            List<Product> products = db.Products.Where(m => m.CategoryByGender.Category_by_gender == id).ToList();
+            pageSize = 15;
+            pageNumber = (page ?? 1);
+            return PartialView("_listProductCategories", products.ToPagedList(pageNumber, pageSize));
+
         }
 
         public ActionResult About()
