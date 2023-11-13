@@ -393,6 +393,7 @@
     <Content Include="Views\Home\_listProductInHome.cshtml" />
     <Content Include="Views\Home\Categories.cshtml" />
     <Content Include="Views\Home\_listProductCategories.cshtml" />
+    <Content Include="Views\Shared\LayoutCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
