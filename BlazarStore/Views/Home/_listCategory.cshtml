@@ -11,14 +11,38 @@
 <script>
     $("li").click(function (e) {
         var id = $(this).attr("id");
-        $.ajax({
-            url: "/Home/RenderProduct",
-            data: { id: id },
-            success: function (response) {
+        if (id == "all") {
+            $.ajax({
+                url: "/Home/RenderAllProduct",
+                data: { id: id },
+                success: function (response) {
+                    // Tạo một đối tượng jQuery từ chuỗi HTML response
+                    var $response = $(response);
 
-                $('.product-grid').html(response);
+                    // Thêm thuộc tính data-isotope vào đối tượng div có class product-grid
+                    $response.find('.product-grid').attr('data-isotope', '{ "itemSelector": ".product-item", "layoutMode": "fitRows" }');
 
-            }
-        });
+                    // Thay thế nội dung của .product-grid bằng nội dung đã được chỉnh sửa
+                    $('.product-grid').html($response);
+                }
+            });
+        }
+        else {
+            $.ajax({
+                url: "/Home/RenderProduct",
+                data: { id: id },
+                success: function (response) {
+                    // Tạo một đối tượng jQuery từ chuỗi HTML response
+                    var $response = $(response);
+
+                    // Thêm thuộc tính data-isotope vào đối tượng div có class product-grid
+                    $response.find('.product-grid').attr('data-isotope', '{ "itemSelector": ".product-item", "layoutMode": "fitRows" }');
+
+                    // Thay thế nội dung của .product-grid bằng nội dung đã được chỉnh sửa
+                    $('.product-grid').html($response);
+                }
+            });
+        }
     });
+
 </script>
